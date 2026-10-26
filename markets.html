@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Markets — CoinPulse</title>
+<meta name="description" content="CoinPulse markets — demo prices for BTC, ETH, SOL, ADA, DOT and LINK, a virtual trading panel and a converter."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://syedsenterprises.github.io/coinpulse/markets.html"/>
+<meta property="og:type" content="website"/><meta property="og:site_name" content="CoinPulse"/>
+<meta property="og:title" content="Markets — CoinPulse"/><meta property="og:description" content="CoinPulse markets — demo prices for BTC, ETH, SOL, ADA, DOT and LINK, a virtual trading panel and a converter."/><meta property="og:url" content="https://syedsenterprises.github.io/coinpulse/markets.html"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Markets — CoinPulse"/><meta name="twitter:description" content="CoinPulse markets — demo prices for BTC, ETH, SOL, ADA, DOT and LINK, a virtual trading panel and a converter."/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://syedsenterprises.github.io/coinpulse/#org", "name": "CoinPulse", "url": "https://syedsenterprises.github.io/coinpulse/"}, {"@type": "WebSite", "@id": "https://syedsenterprises.github.io/coinpulse/#site", "url": "https://syedsenterprises.github.io/coinpulse/", "name": "CoinPulse", "publisher": {"@id": "https://syedsenterprises.github.io/coinpulse/#org"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://syedsenterprises.github.io/coinpulse/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://syedsenterprises.github.io/coinpulse/markets.html"}]}]}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
+<style>*{box-sizing:border-box}body{margin:0;background:#0b1220;color:#e2e8f0;font-family:'Inter',sans-serif}
+a{color:#f59e0b}header{max-width:1100px;margin:0 auto;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-family:'Space Grotesk',serif;font-size:26px;color:#f59e0b;text-decoration:none}.logo span{color:#22c55e}
+nav a{margin:0 10px;text-decoration:none;color:#e2e8f0;font-weight:500}nav a.on{color:#22c55e;border-bottom:2px solid #22c55e}
+.wrap{max-width:1100px;margin:0 auto;padding:10px 22px 30px}
+h1{font-family:'Space Grotesk',serif;font-size:42px;line-height:1.1}h2{font-family:'Space Grotesk',serif;font-size:30px}h3{font-size:19px}
+.btn{background:#f59e0b;color:#fff;border:0;padding:12px 22px;border-radius:999px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
+.btn2{background:#22c55e;color:#fff;border:0;padding:11px 20px;border-radius:999px;font-weight:700;cursor:pointer}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:#111c30;border:1px solid #233349;border-radius:16px;padding:20px}
+.card p{color:#94a3b8}input,select,textarea{width:100%;padding:12px;margin:6px 0;border:1px solid #233349;border-radius:10px;font-size:15px;font-family:inherit}
+.ok{background:#e6f4ea;color:#1e5c2e;padding:12px;border-radius:10px;margin-top:12px;display:none}
+footer{max-width:1100px;margin:20px auto;padding:20px 22px;border-top:1px solid #233349;color:#94a3b8;font-size:13px;text-align:center}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center}
+.tag{color:#94a3b8;font-size:17px}
+.chatbtn{position:fixed;right:20px;bottom:20px;width:60px;height:60px;border-radius:50%;background:#22c55e;color:#fff;border:0;font-size:26px;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.3);z-index:60}
+.chatpanel{position:fixed;right:20px;bottom:92px;width:360px;max-width:92vw;height:480px;max-height:70vh;background:#fff;color:#222;border-radius:18px;box-shadow:0 16px 40px rgba(0,0,0,.3);display:none;flex-direction:column;overflow:hidden;z-index:60}
+.chatpanel.open{display:flex}
+.chathead{background:#f59e0b;color:#fff;padding:14px 16px}.chathead b{font-size:16px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#4ade80;margin-right:6px}
+.chatmsgs{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:85%;padding:10px 13px;border-radius:14px;font-size:14px;line-height:1.45}
+.msg.bot{background:#f1f5f9;align-self:flex-start}.msg.user{background:#f59e0b;color:#fff;align-self:flex-end}
+.chips{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 10px}.chips button{background:#f1f5f9;border:1px solid #e2e8f0;padding:6px 11px;border-radius:999px;cursor:pointer;font-size:12px}
+.chatin{display:flex;gap:8px;padding:10px;border-top:1px solid #eee}.chatin input{margin:0}.chatin button{background:#22c55e;color:#fff;border:0;padding:11px 16px;border-radius:10px;font-weight:700;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,90px);background:#1f2937;color:#fff;padding:15px 20px;border-radius:999px;font-weight:600;box-shadow:0 12px 30px rgba(0,0,0,.35);transition:.3s;z-index:70;opacity:0;pointer-events:none;max-width:92vw;text-align:center}
+.toast.show{transform:translate(-50%,0);opacity:1;pointer-events:auto}
+.toast button{background:#22c55e;color:#fff;border:0;padding:7px 14px;border-radius:999px;margin-left:12px;cursor:pointer;font-weight:700}
+.pulse{animation:pulse .5s}@keyframes pulse{50%{transform:scale(1.12)}}
+.drawer{position:fixed;top:0;right:0;width:360px;max-width:92vw;height:100%;background:#fff;color:#222;box-shadow:-8px 0 30px rgba(0,0,0,.2);padding:22px;overflow:auto;transform:translateX(110%);transition:.25s;z-index:65}
+.drawer.open{transform:none}
+.line{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid #eee;align-items:center}
+.qty button{width:26px;height:26px;border-radius:50%;border:1px solid #ccc;background:#fff;cursor:pointer;font-weight:700}
+@media(max-width:700px){.grid3,.grid2,.hero{grid-template-columns:1fr}h1{font-size:32px}}</style></head><body>
+<header><a class="logo" href="index.html">🪙 Coin<span>Pulse</span></a><nav><a href="index.html" class="">Home</a><a href="markets.html" class="on">Markets</a><a href="learn.html" class="">Learn</a><a href="contact.html" class="">Contact</a></nav></header>
+<main class="wrap"><h1>Market snapshot (demo prices)</h1><p class="tag">Prices refresh every 5 seconds from a simulated random walk — not live data.</p><div class="grid2"><div class="card"><div id="mtable"></div></div><div class="card"><h3>Trade (demo)</h3><select id="tcoin"><option>BTC</option><option>ETH</option><option>SOL</option><option>ADA</option><option>DOT</option><option>LINK</option></select><input id="tamt" type="number" step="any" placeholder="Amount"/><p><button class="btn2" onclick="trade('buy')">Buy</button> <button class="btn2" onclick="trade('sell')">Sell</button> <button class="btn2" onclick="resetW()">Reset wallet</button></p><div id="tlog"></div></div></div>
+<h2>Converter</h2><div class="card"><input id="camt" type="number" placeholder="Amount"/><select id="cfrom"><option>BTC</option><option>ETH</option><option>SOL</option></select><select id="cto"><option>ETH</option><option>BTC</option><option>SOL</option></select><button class="btn2" onclick="conv()">Convert</button><p id="cres"></p></div>
+<h2>Fees (demo)</h2><div class="card"><p>Maker 0.10% · Taker 0.10% · Withdrawal: not available in this demo. A real exchange would differ — always read its real fee page.</p></div></main>
+<footer>CoinPulse · Crypto, clearly. Demo site — simulated prices, virtual wallet, no real money.<br/><a href="index.html">Home</a> · <a href="markets.html">Markets</a> · <a href="learn.html">Learn</a> · <a href="contact.html">Contact</a></footer>
+<button class="chatbtn" onclick="toggleChat()">💬</button><div class="chatpanel" id="chatpanel"><div class="chathead"><span class="dot"></span><b>Pulse</b><span style="opacity:.8"> · Online · Demo assistant, replies instantly</span><button style="float:right;background:none;border:0;color:#fff;font-size:18px;cursor:pointer" onclick="toggleChat()">×</button></div><div class="chatmsgs" id="chatmsgs"></div><div class="chips"><button onclick="chip(&quot;How does the wallet work?&quot;)">How does the wallet work?</button><button onclick="chip(&quot;Is this real money?&quot;)">Is this real money?</button><button onclick="chip(&quot;What are the fees?&quot;)">What are the fees?</button></div><div class="chatin"><input id="chatinput" placeholder="Ask anything…" onkeydown="if(event.key==='Enter')sendChat()"/><button onclick="sendChat()">Send</button></div></div>
+<script>const BOT={"name": "Pulse", "greeting": "Hi, I am Pulse, the CoinPulse demo assistant. Ask about the demo wallet, coins or fees.", "chips": ["How does the wallet work?", "Is this real money?", "What are the fees?"], "rules": [{"k": ["wallet", "demo", "virtual"], "a": "You start with a $10,000 virtual wallet. Buy and sell at demo prices — nothing real moves."}, {"k": ["real", "money"], "a": "No. Prices here are simulated random walks, not live market data. This is not financial advice and no real money moves."}, {"k": ["fee"], "a": "Demo fees are 0.1% per trade, shown before you confirm. A real exchange would differ."}, {"k": ["bitcoin", "btc"], "a": "Bitcoin is the oldest cryptocurrency — a decentralised ledger with a fixed supply of 21 million. See the Learn page."}], "fallback": "I am a demo assistant. I can help with prices, hours, bookings and services. For a real person, use the contact page."};
+function botReply(q){q=q.toLowerCase();for(let r of BOT.rules){if(r.k.some(k=>q.includes(k)))return r.a}return BOT.fallback}
+let greeted=false;
+function toggleChat(){let p=document.getElementById('chatpanel');p.classList.toggle('open');if(p.classList.contains('open')&&!greeted){greeted=true;addMsg('bot',BOT.greeting)}}
+function addMsg(who,text){let m=document.createElement('div');m.className='msg '+who;m.textContent=text;document.getElementById('chatmsgs').appendChild(m);document.getElementById('chatmsgs').scrollTop=99999}
+function sendChat(text){let inp=document.getElementById('chatinput');let q=(text||inp.value).trim();if(!q)return;addMsg('user',q);inp.value='';let t=document.createElement('div');t.className='msg bot';t.id='typing';t.textContent='Typing…';document.getElementById('chatmsgs').appendChild(t);setTimeout(()=>{t.remove();addMsg('bot',botReply(q))},700)}
+function chip(q){document.getElementById('chatinput').value=q;sendChat()}</script>
+<script>
+let WAL=JSON.parse(localStorage.getItem('cp_sim')||'{"cash":10000,"hold":{},"log":[]}');
+let PX={BTC:96866.79,ETH:3427.22,SOL:212.33,ADA:0.52,DOT:6.81,LINK:18.44};
+function saveW(){localStorage.setItem('cp_sim',JSON.stringify(WAL))}
+function val(){let v=WAL.cash;for(let c in WAL.hold)v+=WAL.hold[c]*PX[c];return v}
+function renderW(){let w=document.getElementById('wallet');if(!w)return;w.innerHTML='<p>Cash: <b>$'+WAL.cash.toFixed(2)+'</b> · Portfolio: <b>$'+val().toFixed(2)+'</b></p><p>'+(Object.keys(WAL.hold).length?Object.keys(WAL.hold).map(c=>c+': '+WAL.hold[c].toFixed(4)).join(' · '):'No holdings yet.')+'</p>';
+  let t=document.getElementById('mtable');if(t)t.innerHTML=Object.keys(PX).map(c=>'<div class="line"><span><b>'+c+'</b></span><span>$'+PX[c].toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})+'</span></div>').join('');
+  let l=document.getElementById('tlog');if(l)l.innerHTML=WAL.log.length?WAL.log.slice(-8).map(x=>'<div class="line"><span>'+x+'</span></div>').join(''):'<p>No trades yet.</p>'}
+function trade(kind){let c=document.getElementById('tcoin').value;let amt=parseFloat(document.getElementById('tamt').value);if(!amt||amt<=0)return;let cost=amt*PX[c];if(kind==='buy'){if(cost>WAL.cash){alert('Not enough virtual cash.');return}WAL.cash-=cost;WAL.hold[c]=(WAL.hold[c]||0)+amt;WAL.log.push('Bought '+amt+' '+c+' at $'+PX[c].toFixed(2))}else{if((WAL.hold[c]||0)<amt){alert('Not enough '+c+'.');return}WAL.cash+=cost;WAL.hold[c]-=amt;if(WAL.hold[c]<0.0001)delete WAL.hold[c];WAL.log.push('Sold '+amt+' '+c+' at $'+PX[c].toFixed(2))}saveW();renderW()}
+function conv(){let a=parseFloat(document.getElementById('camt').value)||0;let f=document.getElementById('cfrom').value;let t=document.getElementById('cto').value;let usd=a*PX[f];document.getElementById('cres').textContent=a+' '+f+' ≈ '+(usd/PX[t]).toFixed(4)+' '+t}
+function resetW(){localStorage.removeItem('cp_sim');WAL={cash:10000,hold:{},log:[]};renderW()}
+setInterval(()=>{for(let c in PX)PX[c]*=(1+(Math.random()-0.5)*0.01);renderW()},5000);
+renderW();
+</script>
+
+</body></html>
