@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CoinPulse — Crypto, Clearly</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0b0e14;color:#e6e9f0;font-family:'Space Grotesk',sans-serif}
+header{max-width:1080px;margin:0 auto;padding:18px 22px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:24px;font-weight:700}.logo span{color:#a3e635}
+.btn{background:#a3e635;color:#0b0e14;border:0;padding:11px 20px;border-radius:10px;font-weight:700;cursor:pointer}
+.tick{background:#12161f;padding:10px 22px;font-family:'IBM Plex Mono',monospace;font-size:13px;white-space:nowrap;overflow:hidden}
+.up{color:#4ade80}.dn{color:#f87171}
+.hero{max-width:1080px;margin:0 auto;padding:30px 22px;display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:start}
+.hero h1{font-size:48px;line-height:1.05;margin:0 0 12px}.hero h1 span{color:#a3e635}
+.hero p{color:#9aa3b2;font-size:17px}
+.panel{background:#12161f;border:1px solid #232a3a;border-radius:18px;padding:22px}
+.panel input,.panel select{width:100%;padding:12px;margin:6px 0;background:#0b0e14;border:1px solid #232a3a;color:#fff;border-radius:10px;font-size:15px}
+.out{font-family:'IBM Plex Mono',monospace;font-size:22px;color:#a3e635;margin-top:10px}
+table{width:100%;border-collapse:collapse;font-family:'IBM Plex Mono',monospace;font-size:14px}
+th{color:#9aa3b2;text-align:left;padding:10px;border-bottom:1px solid #232a3a}
+td{padding:12px 10px;border-bottom:1px solid #1a2030}
+td button{width:auto;padding:7px 14px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+h2{margin:34px 0 14px}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:30px}
+.f{background:#12161f;border:1px solid #232a3a;border-radius:16px;padding:20px}.f p{color:#9aa3b2;font-size:14px}
+.note{color:#9aa3b2;font-size:12px;text-align:center;padding:20px}
+.log{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9aa3b2}
+@media(max-width:700px){.hero,.feats{grid-template-columns:1fr}.hero h1{font-size:36px}}
+</style></head><body>
+<header><div class="logo">Coin<span>Pulse</span></div><button class="btn" onclick="resetSim()">Reset demo wallet</button></header>
+<div class="tick" id="tick"></div>
+<section class="hero"><div><h1>Crypto without the confusion. <span>Trade clearly.</span></h1><p>Practice with a <b>$10,000 virtual wallet</b> — buy and sell at demo prices, watch your portfolio move, and learn before risking real money. Nothing here is real trading.</p>
+<div class="panel"><h3 style="margin:0 0 6px">Your demo wallet</h3><div style="font-family:'IBM Plex Mono',monospace">Cash: <b id="cash"></b> · Portfolio: <b id="pf"></b></div><div id="hold" style="margin-top:10px"></div><div class="log" id="log"></div></div></div>
+<div class="panel"><h3 style="margin:0 0 6px">Trade (demo)</h3>
+<select id="asset"><option value="btc">Bitcoin (BTC)</option><option value="eth">Ethereum (ETH)</option><option value="sol">Solana (SOL)</option></select>
+<input id="usd" type="number" value="500" placeholder="USD amount"/>
+<button class="btn" style="width:100%;margin:6px 0" onclick="trade('buy')">Buy with USD →</button>
+<button class="btn" style="width:100%;background:#f87171" onclick="trade('sell')">Sell all of asset →</button>
+<h3 style="margin:18px 0 6px">Converter</h3><input id="amt" type="number" value="100" oninput="conv()"/><div class="out" id="out"></div></div></section>
+<div class="wrap"><h2>Market snapshot (demo prices)</h2>
+<table><tr><th>Asset</th><th>Price</th><th>24h</th></tr>
+<tr><td><b>BTC</b> Bitcoin</td><td id="p-btc"></td><td id="c-btc"></td></tr>
+<tr><td><b>ETH</b> Ethereum</td><td id="p-eth"></td><td id="c-eth"></td></tr>
+<tr><td><b>SOL</b> Solana</td><td id="p-sol"></td><td id="c-sol"></td></tr></table>
+<h2>Why CoinPulse</h2>
+<div class="feats"><div class="f"><b>Fees up front</b><p>See the exact fee before you confirm. No spread games.</p></div><div class="f"><b>Learn built in</b><p>Every coin page explains what it does in plain words.</p></div><div class="f"><b>Practice first</b><p>Virtual wallet included — make mistakes with fake money.</p></div></div></div>
+<p class="note">CoinPulse demo theme · Prices are simulated random walks, not live data. Not financial advice. No real money moves here.</p>
+<script>
+let prices={btc:97240,eth:3412,sol:212},chg={btc:2.4,eth:-1.1,sol:5.8};
+let S=JSON.parse(localStorage.getItem('cp_sim')||'{"cash":10000,"hold":{},"log":[]}');
+function save(){localStorage.setItem('cp_sim',JSON.stringify(S))}
+function fmt(n){return '$'+n.toLocaleString(undefined,{maximumFractionDigits:2})}
+function wallet(){let pv=S.cash;let h='';for(let k in S.hold){let v=S.hold[k]*prices[k];pv+=v;h+=`<div>${k.toUpperCase()}: ${S.hold[k].toFixed(6)} ≈ ${fmt(v)}</div>`}
+document.getElementById('cash').textContent=fmt(S.cash);document.getElementById('pf').textContent=fmt(pv);document.getElementById('hold').innerHTML=h||'No holdings yet.';document.getElementById('log').innerHTML=S.log.slice(-5).join('<br/>')}
+function trade(side){let a=document.getElementById('asset').value,usd=parseFloat(document.getElementById('usd').value)||0;if(side==='buy'){if(usd<=0||usd>S.cash){alert('Enter an amount within your cash balance.');return}let q=usd/prices[a];S.hold[a]=(S.hold[a]||0)+q;S.cash-=usd;S.log.push(`Bought ${q.toFixed(6)} ${a.toUpperCase()} for ${fmt(usd)}`)}else{let q=S.hold[a]||0;if(q<=0){alert('You hold no '+a.toUpperCase()+'.');return}let v=q*prices[a];S.cash+=v;S.hold[a]=0;S.log.push(`Sold ${q.toFixed(6)} ${a.toUpperCase()} for ${fmt(v)}`)}save();wallet()}
+function conv(){let a=parseFloat(document.getElementById('amt').value)||0;let c=document.getElementById('asset').value;document.getElementById('out').textContent='≈ '+(a/prices[c]).toFixed(6)+' '+c.toUpperCase()}
+function tick(){let s='';for(let k in prices){let d=(Math.random()*1.4-0.7);chg[k]+=d;prices[k]*=(1+d/100);document.getElementById('p-'+k).textContent=fmt(prices[k]);let el=document.getElementById('c-'+k);el.textContent=(chg[k]>=0?'+':'')+chg[k].toFixed(2)+'%';el.className=chg[k]>=0?'up':'dn';s+=k.toUpperCase()+' '+fmt(prices[k])+' ('+(chg[k]>=0?'+':'')+chg[k].toFixed(2)+'%)   ';}document.getElementById('tick').textContent=s+'· Demo feed — not live prices';wallet()}
+function resetSim(){S={cash:10000,hold:{},log:[]};save();wallet()}
+conv();tick();setInterval(tick,4000);
+</script></body></html>
